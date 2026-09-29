@@ -119,6 +119,13 @@ cd frontend
 npm run build
 ```
 
+On Windows PowerShell, if `npm run build` is blocked by the execution policy, use:
+
+```powershell
+cd frontend
+npm.cmd run build
+```
+
 The FastAPI application serves the generated frontend from `frontend/dist` when that directory exists.
 
 ## 7. Basic Usage
