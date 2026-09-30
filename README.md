@@ -154,3 +154,5 @@ The Python source has also been syntax-checked with `py_compile`.
 - Add authentication and role-based access control.
 - Add database migrations for production deployments.
 - Expand automated API and frontend tests.
+
+CI pipeline test
