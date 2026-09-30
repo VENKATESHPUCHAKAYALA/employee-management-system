@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 
 const blank = { name: "", role: "", location: "", domain: "", working: "Working" };
+const LOGIN_USERNAME = "venkatesh";
+const LOGIN_PASSWORD = "venkat@12";
 
 export default function App() {
-  const [authenticated, setAuthenticated] = useState(() => localStorage.getItem("staidlogic-auth") === "true");
+  const [authenticated, setAuthenticated] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
@@ -17,13 +19,12 @@ export default function App() {
   const [showForm, setShowForm] = useState(false);
   const login = e => {
     e.preventDefault();
-    if (username.trim() && password) {
-      localStorage.setItem("staidlogic-auth", "true");
+    if (username.trim() === LOGIN_USERNAME && password === LOGIN_PASSWORD) {
       setAuthenticated(true);
       setLoginError("");
-    } else setLoginError("Enter your username and password.");
+    } else setLoginError("Invalid username or password.");
   };
-  const logout = () => { localStorage.removeItem("staidlogic-auth"); setAuthenticated(false); };
+  const logout = () => setAuthenticated(false);
   const load = async () => { const r = await fetch("/api/employees"); if (r.ok) setEmployees(await r.json()); };
   useEffect(() => { load(); }, []);
   const change = e => setForm({ ...form, [e.target.name]: e.target.value });

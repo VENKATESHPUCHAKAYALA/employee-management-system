@@ -1,4 +1,4 @@
-# Staidlogic Employee Management
+# Staidlogic Employee Management System
 
 Full-stack employee management application with a Staidlogic login page, employee dashboard, CRUD operations, filters, and SQLite persistence.
 
