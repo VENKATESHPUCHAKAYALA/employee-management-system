@@ -46,7 +46,7 @@ def home():
 # Get employees
 @app.get("/api/employees", response_model=list[EmployeeResponse])
 @app.get("/employees", response_model=list[EmployeeResponse])
-def get_employees(db: Session = Depends(get_db)):
+def get_employees(db: Session = Depends(get_db)):  # noqa: B008  
     return db.query(Employee).all()
 
 
@@ -54,7 +54,7 @@ def get_employees(db: Session = Depends(get_db)):
 @app.post("/api/employees", response_model=EmployeeResponse)
 def add_employee(
     employee: EmployeeCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db)  # noqa: B008,
 ):
     new_employee = Employee(
         name=employee.name,
@@ -75,7 +75,7 @@ def add_employee(
 @app.delete("/api/employees/{employee_id}")
 def delete_employee(
     employee_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db)  # noqa: B008,
 ):
     employee = (
         db.query(Employee)
@@ -100,7 +100,7 @@ def delete_employee(
 def update_employee(
     employee_id: int,
     employee_data: EmployeeUpdate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db)  # noqa: B008,
 ):
     employee = (
         db.query(Employee)
